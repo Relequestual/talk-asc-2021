@@ -1,0 +1,21 @@
+{
+  "name": "2021-asc",
+  "version": "1.0.0",
+  "description": "Resources for 2021 ASC talk",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "gen-images": "yarn run create-dirs && yarn run make-images",
+    "make-images": "find ./source -type f -d 2 -name '*.json' -print0 | sort -z | xargs -n1 -r0 -I filename carbon-now -h --target \"filename\" -l \"./output\" \"filename\"",
+    "clear": "find . -type f -d 3 -name '*.png' -print0 | sort -z | xargs -n1 -r0 rm",
+    "create-dirs": "find ./source -type d -exec mkdir -p ./output/{} \\;"
+  },
+  "volta": {
+    "node": "14.17.6",
+    "yarn": "1.22.11"
+  },
+  "dependencies": {
+    "carbon-now-cli": "^1.4.0"
+  }
+}
